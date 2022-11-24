@@ -1,0 +1,101 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="container">
+
+<select class="form-select-sm" aria-label="Default select example">
+  <option selected>동물 유형</option>
+  <option value="1">강아지</option>
+  <option value="2">고양이</option>
+</select>
+
+        <div class="row">
+            <div class="col-lg-8 order-lg-0 order-2">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <img class=""
+                            src="https://cdn.salgoonews.com/news/photo/202202/16023_39531_1722.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                            alt="">
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-org">javascript</span>
+                            <span class="text-muted ps-4">March 27, 2021</span>
+                        </div>
+                        <div>
+                            <p class="text-capitalize fs5 my-3 fw-bolder">why node.js os the coolest kid on the backend
+                                development
+                                block!</a>
+                            <p class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                numquam, quisquam ad, necessitatibus illum explicabo ut pariatur iusto asperiores dicta
+                                repudiandae delectus facere </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img class=""
+                            src="https://thumb.photo-ac.com/36/36ac7e6d35c77963ea274654a3f296b6_t.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                            alt="">
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-blue">css</span>
+                            <span class="text-muted ps-4">May 27, 2021</span>
+                        </div>
+                        <div>
+                            <p class="text-capitalize fs5 my-3 fw-bolder">CSS Float: A Tutorial</a>
+                            <p class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                numquam, quisquam ad, necessitatibus illum explicabo ut pariatur iusto asperiores dicta
+                                repudiandae delectus facere </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="https://img.hankyung.com/photo/202109/99.26479073.1.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                            alt="">
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-vio">JQuery</span>
+                            <span class="text-muted ps-4">March 1, 2021</span>
+                        </div>
+                        <div>
+                            <p class="text-capitalize fs5 my-3 fw-bolder">ASK HN: Does Anybody Still Use JQuery</a>
+                            <p class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                numquam, quisquam ad, necessitatibus illum explicabo ut pariatur iusto asperiores dicta
+                                repudiandae delectus facere </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img class=""
+                            src="https://cdn.salgoonews.com/news/photo/202202/16023_39531_1722.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                            alt="">
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-org">javascript</span>
+                            <span class="text-muted ps-4">March 27, 2021</span>
+                        </div>
+                        <div>
+                            <p class="text-capitalize fs5 my-3 fw-bolder">why node.js os the coolest kid on the backend
+                                development
+                                block!</a>
+                            <p class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                numquam, quisquam ad, necessitatibus illum explicabo ut pariatur iusto asperiores dicta
+                                repudiandae delectus facere </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

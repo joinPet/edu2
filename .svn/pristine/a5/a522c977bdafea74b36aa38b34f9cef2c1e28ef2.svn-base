@@ -1,0 +1,73 @@
+<%@page import="java.util.Map"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/taglib/taglib.jspf"%>
+
+<style>
+#btn_join {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	margin-right:2px;
+}
+
+#btn_login {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left:-3px;
+}
+
+#btn_group button {
+	border: 1px solid skyblue;
+	background-color: rgba(0, 0, 0, 0);
+	color: skyblue;
+	padding: 5px;
+}
+
+#btn_group button:hover {
+	color: white;
+	background-color: skyblue;
+}
+</style>
+
+<header class="lh-1 py-3">
+	<div class="row flex-nowrap justify-content-between align-items-center">
+		<div class="col-4">
+			<h1>
+				<a class="text-dark text-decoration-none" href="/main.do">Be 반려人</a>
+			</h1>
+		</div>
+		<%
+			Map<String, Object> member = (Map<String, Object>) session.getAttribute("member");
+		%>
+		<%
+			if (member == null) {
+		%>
+		<div class="col-2 d-flex justify-content-end align-items-center"
+			id="btn_group">
+			<button type="button" id="btn_join" onclick="location.href='/member/join.do'">회원가입</button>
+			<button type="button" id="btn_login" onclick="location.href='/member/login.do'">로그인</button>
+		</div>
+		<%
+			} else {
+		%>
+		<div class="col-2 d-flex justify-content-end align-items-center">
+			<a class="btn btn-sm" href="/profile/profile.do"><%=member.get("user_id")%>님</a>
+			<input type="button" value="로그아웃" class="btn btn-dark"
+				onClick="logout()" />
+		</div>
+
+		<%
+			}
+		%>
+	</div>
+
+	<script>
+		function logout() {
+			var con = confirm("로그아웃 하시겠습니까?");
+			if (con == true) {
+				location.href = "/member/logout.do";
+			} else {
+			}
+		}
+	</script>
+</header>

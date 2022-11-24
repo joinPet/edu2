@@ -1,0 +1,43 @@
+#-----------------------------------------------------------------------
+#
+#   configs.properties : \uc2dc\uc2a4\ud15c
+#
+#-----------------------------------------------------------------------
+#JOINTREE CMS SETTING
+Configs.cms.Id=jtsm
+
+#cms paging setting
+Configs.cms.Page.Unit=20
+Configs.cms.Page.Size=10
+
+#site paging setting
+Configs.site.Page.Unit=10
+Configs.site.Page.Size=10
+
+#loginf setting
+Configs.login.Lock.Flag=true
+Configs.login.Lock.Count=5
+Configs.login.Lock.Time=30
+
+#upload path
+Configs.upload.Post=D:/data/upload/ess/monitoring/post/
+Configs.upload.Popup=D:/data/upload/ess/monitoring/popup/
+Configs.upload.Popupzone=D:/data/upload/ess/monitoring/popupzone/
+#Configs.upload.Post=/data/upload/monitoring/post/
+#Configs.upload.Popup=/data/upload/monitoring/popup/
+#Configs.upload.Popupzone=/data/upload/monitoring/popupzone/
+
+#deploy path
+Configs.deploy.Menu=D:/02.project/2021/06.ess/source/monitoring/src/main/webapp/WEB-INF/jsp/egovframework/root/menu/
+Configs.deploy.Contents=D:/02.project/2021/06.ess/source/monitoring/src/main/webapp/WEB-INF/jsp/egovframework/root/contents/
+Configs.deploy.Skin=D:/02.project/2021/06.ess/source/monitoring/src/main/webapp/WEB-INF/jsp/egovframework/root/board/
+Configs.deploy.Layout=D:/02.project/2021/06.ess/source/monitoring/src/main/webapp/WEB-INF/jsp/jointree/
+Configs.deploy.Style=D:/02.project/2021/06.ess/source/monitoring/src/main/webapp/assets/
+Configs.deploy.Page=D:/02.project/2021/06.ess/source/monitoring/src/main/webapp/WEB-INF/jsp/jointree/
+#Configs.deploy.Menu=/data/source/ROOT/WEB-INF/jsp/egovframework/root/menu/
+#Configs.deploy.Contents=/data/source/ROOT/WEB-INF/jsp/egovframework/root/contents/
+#Configs.deploy.Skin=/data/source/ROOT/WEB-INF/jsp/egovframework/root/board/
+#Configs.deploy.Layout=/data/source/ROOT/WEB-INF/jsp/jointree/
+#Configs.deploy.Style=/data/source/ROOT/assets/
+#Configs.deploy.Page=/data/source/ROOT/WEB-INF/jsp/jointree/
+

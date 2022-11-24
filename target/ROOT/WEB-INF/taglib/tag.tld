@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+	
+	<description>customTag</description>
+    <tlib-version>4.2</tlib-version>
+    <short-name>custom</short-name>
+    
+    <!-- 게시판 권한 테그를 만든다.  -->
+    <!-- 페이징테그를 만든다.  -->
+	<tag>
+		<!-- 태크이름 -->
+        <name>paging</name>
+        
+        <!-- 태크 클래스 -->
+        <tag-class>egovframework.com.cmm.tag.PagingTag</tag-class>
+        <body-content>tagdependent</body-content>
+        
+        <attribute>
+            <name>paginationInfo</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <name>type</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        
+        <attribute>
+            <name>jsFunction</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
+</taglib>

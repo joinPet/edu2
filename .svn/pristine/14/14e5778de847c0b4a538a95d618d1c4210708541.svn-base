@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SiteMemberDAO">
+	<!-- 회원가입  -->
+	<insert id="memberInsert">
+		insert into user
+			(user_id, user_pw ,user_mbti ,user_email, user_dong, user_info )
+		values
+			( #{user_id}, #{user_pw} ,#{user_mbti} ,#{user_email} ,#{user_dong},#{user_info} )
+	</insert>
+	<!-- 로그인 -->
+	<select id="memberLogin" parameterType="hashMap" resultType="hashMap">
+		select * from user where user_id =#{user_id} AND user_pw=#{user_pw} 
+	</select>
+</mapper>

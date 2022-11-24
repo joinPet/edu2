@@ -1,0 +1,38 @@
+<%@page import="java.util.Map"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/taglib/taglib.jspf"%>
+
+<!-- <script>
+	function logout(){
+	 var con = confirm("접속을 종료하시겠습니까");
+	 if(con == true){
+	 }else{}
+	}
+</script> -->
+
+<header class="lh-1 py-3">
+	<div class="row flex-nowrap justify-content-between align-items-center">
+		<div class="col-4">
+			<h1><a class="text-dark text-decoration-none" href="/main.do">Be 반려人</a></h1>
+		</div>
+		<% Map<String, Object> member = (Map<String, Object>)session.getAttribute("member"); %>
+		<% if(member==null){  %>
+		<div class="col-2 d-flex justify-content-end align-items-center">
+			<a class="btn btn-sm" href="/member/join.do">회원가입</a>
+			<a class="btn btn-sm" href="/member/login.do">로그인</a>
+		</div>
+		<%}else{ %>
+		<div class="col-2 d-flex justify-content-end align-items-center">
+			<a class="btn btn-sm" href="/profile/profile.do"><%=member.get("user_id") %>님</a>
+			<a class="btn btn-sm" href="/main.do">로그아웃
+			<%-- <%
+			 session.removeAttribute("member");
+			//username 으로 들어온 session을 제거
+			 response.sendRedirect("/main.do");
+			// 페이지의 메인으로 이동
+			 %> --%>
+			 </a>
+		</div>
+		<%} %>
+	</div>
+</header>

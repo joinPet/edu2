@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+
+    <!-- 해당 설정파일에서 사용하는 프로퍼티 -->
+    <Properties>
+        <Property name="LOG_PATH">/data/logs/edu1</Property>
+        <Property name="LOG_FILE_NAME">edu1</Property>
+        <property name="ERR_LOG_FILE_NAME">error_edu1</property>
+        <property name="LOG_PATTERN" value="%style{%-5level %d{yyyy-MM-dd HH:mm:ss} %C [%logger{0}:%line] - %msg%n}{ERROR=red,INFO=green, DEBUG=green, WARN=yellow}"/>
+    </Properties>
+
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <RollingFile name="FILE" fileName="${LOG_PATH}/${LOG_FILE_NAME}.log" filePattern="${LOG_PATH}/${LOG_FILE_NAME}_%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="ERROR_FILE" fileName="${LOG_PATH}/${ERR_LOG_FILE_NAME}.log" filePattern="${LOG_PATH}/${ERR_LOG_FILE_NAME}_%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <!-- 실제 Logger -->
+    <Loggers>
+        <Root level="INFO" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Root>
+
+        <Logger name="egovframework" level="debug" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+        <Logger name="kr.co.jointree" level="debug" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+        <Logger name="org.springframework" level="WARN" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+        <Logger name="jdbc.sqlonly" level="debug" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+        <Logger name="jdbc.sqltiming" level="OFF" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+        <Logger name="jdbc.resultsettable" level="OFF" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+        <Logger name="jdbc.resultset" level="OFF" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+        <Logger name="jdbc.connection" level="OFF" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+        <Logger name="jdbc.audit" level="OFF" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_FILE" level = "ERROR"/>
+        </Logger>
+
+    </Loggers>
+</Configuration>

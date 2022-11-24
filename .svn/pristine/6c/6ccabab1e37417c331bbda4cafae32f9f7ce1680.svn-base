@@ -1,0 +1,11 @@
+package kr.co.jointree.edu2.site.profile.service;
+
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+
+public interface SitePetService {
+	// 펫 등록
+		public int petInsert(Map<String, Object> pet);
+}

@@ -1,0 +1,18 @@
+package kr.co.jointree.edu2.site.reservation.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.validation.annotation.Validated;
+
+import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
+@Validated
+@Repository("SiteReservationDAO")
+public class SiteReservationDAO extends EgovComAbstractDAO {
+	//예약등록
+		int resInsert(Map<String, Object> resInfo) {
+			return insert("SiteReservationDAO.resInsert", resInfo);
+		}
+	
+}

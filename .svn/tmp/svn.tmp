@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/assets/site/css/style.css">
+<meta charset="UTF-8">
+<title>로그인</title>
+</head>
+<body>
+	<section>
+		<div class="left">
+			<img src="//unsplash.it/700" alt="" />
+			<div class="sign-up">
+				<h1>계정을 생성하세요</h1>
+				<form action="">
+					<input type="text" placeholder="Username" /> <input type="email"
+						placeholder="Email Address" /> <input type="password"
+						placeholder="Create Password" /> <input type="password"
+						placeholder="Confirm Password" /> <input type="submit"
+						value="회원가입" />
+				</form>
+				<p>
+					계정이 있으신가요? <a href="#" id="Sign in" onclick="toggle()">로그인</a>
+				</p>
+			</div>
+		</div>
+		<div class="right">
+			<img src="//unsplash.it/600" />
+			<div class="sign-in">
+				<h1>Sing In</h1>
+				<form action="">
+					<input type="text" placeholder="아이디" /> <input type="password"
+						placeholder="비밀번호" /> <input type="submit" value="로그인" />
+				</form>
+				<p>
+					계정이 없으신가요? <a href="#" onclick="toggle()">회원가입</a>
+				</p>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

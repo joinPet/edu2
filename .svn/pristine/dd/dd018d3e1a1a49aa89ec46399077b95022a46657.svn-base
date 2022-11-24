@@ -1,0 +1,155 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><%@ include file="/WEB-INF/taglib/taglib.jspf"%><%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%><%@ page session="false" %>
+
+
+
+<form action ="/profile/petprofile_save.do" method="post">
+<div class="container-xl px-4 mt-4">
+	<h2>My Pet</h2>
+	<hr class="mt-0 mb-4">
+
+	<div class="row">
+	
+		<div class="col-xl-4">
+			<!-- 반려동물 이미지-->
+			<div class="card mb-4 mb-xl-0">
+				<div class="card-header">pet picture</div>
+				<div class="card-body text-center">
+					<!-- Profile picture image-->
+					<div id="image-show" class="img-account-profile rounded-circle mb-2"></div>
+					<!-- Profile picture help block-->
+					<div class="small font-italic text-muted mb-4">JPG or PNG no
+						larger than 5 MB</div>
+
+				 <input type="file" id="fileData" name="fileData" accept="image/*" onChange="loadFile(this)" >
+				 
+				 <div class="buttonContainer"  >
+                    <div class="submitButton" id="submitButton" >확인</div>
+                    </div>
+                    
+                </div>
+				 
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="col-xl-8">
+			<!-- Account details card-->
+			<div class="card mb-4">
+				<div class="card-header">pet profile 등록</div>
+				<div class="card-body">
+					
+						
+						<div class="mb-3">
+							<label class="small mb-1" for="inputUsername">반려동물 이름</label> 
+							<input
+								class="form-control" name = "pet_name" id="inputUsername" type="text"
+								placeholder="반려동물 이름" >
+						</div>
+						
+						<div class="row gx-3 mb-3">
+
+							<div class="col-md-6">
+								<label class="small mb-1" for="pet_age">나이</label> 
+								<input
+									class="form-control" name = "pet_age" id="pet_age" type="text" placeholder="3">
+							</div>
+							
+							<label class="small mb-1" for="pet_type">동물유형</label>
+							<select name="pet_type" class="form-control" aria-label="Default select example">								
+								<option value="1">강아지</option>
+								<option value="2">고양이</option>
+							</select>
+							<div class="col-md-6">
+								<label class="small mb-1" for="pet_kind">품종</label> <input
+									class="form-control" name ="pet_kind" id="inputLastName" type="text" placeholder="비글">
+							</div>
+							<label class="small mb-1" for="pet_gender">성별</label>
+							<select name="pet_gender" class="form-control" aria-label="Default select example">								
+								<option value="1">수컷</option>
+								<option value="2">암컷</option>
+							</select>
+							<label class="small mb-1" for="pet_size">크기</label>
+							<select class="form-control" name="pet_size" aria-label="Default select example">								
+								<option value="1">소형</option>
+								<option value="2">중형</option>
+								<option value="3">대형</option>
+							</select>
+						</div>
+						
+						<!-- Save changes button-->
+						
+							
+					
+				</div>
+			</div>
+			<div class="card mb-4">
+				<div class="card-header">우리 아이 성격</div>
+				<div class="card-body">
+				<p>한개 이상 선택해주세요 *필수</p>
+					<input type ="checkbox" name="pet_character" value="깨발랄">깨발랄
+					<input type ="checkbox" name="pet_character" value="순둥이">순둥이
+					<input type ="checkbox" name="pet_character" value="차분">차분
+					<input type ="checkbox" name="pet_character" value="애교쟁이">애교쟁이
+					<input type ="checkbox" name="pet_character" value="장난꾸러기">장난꾸러기
+					<input type ="checkbox" name="pet_character" value="호기심쟁이">호기심쟁이
+					<input type ="checkbox" name="pet_character" value="겁쟁이">겁쟁이
+					<input type ="checkbox" name="pet_character" value="시크">시크
+					<input type ="checkbox" name="pet_character" value="비사교적">비사교적
+					<input type ="checkbox" name="pet_character" value="소리에 민감">소리에 민감
+					<input type ="checkbox" name="pet_character" value="식탐쟁이">식탐쟁이
+					<input type ="checkbox" name="pet_character" value="주인바라기">주인바라기
+					<input type ="checkbox" name="pet_character" value="산책장인">산책장인
+					<input type ="checkbox" name="pet_character" value="사교적">사교적
+					<input type ="checkbox" name="pet_character" value="낯가림">낯가림
+				</div>
+				</div>
+				<div class="card mb-4">
+				<div class="card-header">우리 아이 소개</div>
+				<div class="card-body">
+				<textarea name="pet_intro"></textarea>
+				</div>
+				</div>
+				<input type="hidden" id="post_seq" name="post_seq"/>
+		</div>
+			 <input type="submit" class="btn btn-primary" value="저장">	
+</form>
+<script>
+var submit = document.getElementById('submitButton');
+submit.onclick = showImage;
+
+function showImage() {
+	
+    var newImage = document.getElementById('image-show').lastElementChild;
+    newImage.style.visibility = "visible";
+    
+    document.getElementById('image-upload').style.visibility = 'hidden';
+	
+        //기존 파일 이름 지우기
+}
+function loadFile(input) {
+    var file = input.files[0];	//선택된 파일 가져오기
+
+    //미리 만들어 놓은 div에 text(파일 이름) 추가
+    var name = document.getElementById('fileData');
+    name.textContent = file.name;
+
+  	//새로운 이미지 div 추가
+  	
+    var newImage = document.createElement("img");
+    newImage.setAttribute("id", 'img1');
+  	
+    //이미지 source 가져오기
+    newImage.src = URL.createObjectURL(file);   
+
+    newImage.style.width = "70%";
+    newImage.style.height = "70%";
+    newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지를 숨긴다
+    newImage.style.objectFit = "contain";
+
+    //이미지를 image-show div에 추가
+    //var container = document.getElementById('image-show');
+    //container.html(newImage);
+    $('#image-show').html(newImage);
+    
+};
+</script>

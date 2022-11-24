@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SiteReservationDAO">
+	<!-- 요청 등록  -->
+	<insert id="resInsert">
+		insert into request_board
+			(recep_id, pet_id ,req_date ,req_time,req_play, req_comment, send_id )
+		values
+			( #{recep_id}, #{pet_id} ,#{req_date} ,#{req_time} ,#{req_play},#{req_comment},#{send_id})
+	</insert>
+	<!-- 받은 요청리스트 -->
+	<select id="resList" parameterType="String" resultType="hashMap">
+	   select recep_id, request_board.pet_id, req_date, req_time , req_play, req_comment, send_id, pet_profile.pet_name
+	   from pet_profile , request_board
+	   where pet_profile.pet_id in (select pet_id from request_board where recep_id=#{recep_id})
+	  
+   
+	</select>
+	
+	<!-- 보낸 요청리스트 -->
+	<select id="sendList" parameterType="String" resultType="hashMap">
+	   select recep_id, request_board.pet_id, req_date, req_time , req_play, req_comment, send_id, pet_profile.pet_name
+	   from pet_profile, request_board
+	   where pet_profile.pet_id in (select pet_id from request_board where send_id=#{send_id})
+	  
+	
+	</select>
+	
+	
+</mapper>

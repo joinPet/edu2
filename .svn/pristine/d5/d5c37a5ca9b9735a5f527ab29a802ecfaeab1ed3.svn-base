@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<div class="row">
+	<!-- 왼쪽 메뉴 -->
+	<div class="col-sm-2">
+		<div class="card">
+			<div class="card-header">Pet Map</div>
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-item"><a
+					class="nav-link text-decoration-none link-light active ${path eq '' ? 'active':''}"
+					href="">우리동네 병원</a></li>
+				<li class="nav-item"><a
+					class="nav-link text-decoration-none link-dark ${path eq '' ? 'active':''}"
+					href="">우리동네 카페</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- /Breadcrumb -->
+	<div class="col-sm-9">
+		<h2 class="bd-title border-bottom pb-3 mb-3">우리동네 병원찾기</h2>
+		<a class="current location" onclick="currentlocation()">현재 위치</a>
+		<div id="map" style="width: 800px; height: 700px;"></div>
+	</div>
+</div>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3ee0ff5530f737ba6e26ce6a36245e06"></script>
+<script>
+	var container = document.getElementById('map');
+	
+	var options = {
+		// 지도 중심 좌표
+		center : new kakao.maps.LatLng(33.450701, 126.570667),
+		level : 5
+	};
+	
+	// 현재위치 받아오기
+	const locationLoadSuccess = pos => {
+		   const currentPos = new kakao.maps.LatLng(pos.coords.latitude,pos.coords.longitude)
+		   map.panTo(currentPos)
+		}
+	
+	// 현재위치로 보여주는 함수
+	function currentlocation() {
+		navigator.geolocation.getCurrentPosition(locationLoadSuccess)
+	}
+		
+	var map = new kakao.maps.Map(container, options);
+	map.setDraggable(draggable=false)  // draggable = true(드래그 가능) / false(드래그 불가)
+</script>

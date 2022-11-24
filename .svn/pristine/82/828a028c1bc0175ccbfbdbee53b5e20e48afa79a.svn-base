@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SitePetDAO">
+	<!-- 펫등록  -->
+	<insert id="petInsert">
+		insert into pet_profile
+			(pet_id, user_id ,pet_name ,pet_type, pet_age, pet_kind, pet_gender, pet_size, pet_character, pet_intro, file_seq )
+		values
+			( #{pet_id}, #{user_id} ,#{pet_name} ,#{pet_type} ,#{pet_age},#{pet_kind},#{pet_gender}, #{pet_size}, #{pet_character},#{pet_intro},#{file_seq} )
+	</insert>
+	
+	<!-- user_id 에따른 pet정보 가져오기 -->
+	<select id="petListByID" parameterType="String" resultType="hashMap">
+		select * from pet_profile
+		where user_id = #{user_id}
+	</select>
+	
+	<!-- 모든 pet 리스트 가져오기 -->
+	<select id="petListAll" resultType="hashMap">
+		select * from pet_profile
+	</select>
+</mapper>

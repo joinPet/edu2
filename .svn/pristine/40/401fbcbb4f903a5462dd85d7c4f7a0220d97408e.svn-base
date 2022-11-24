@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/taglib/taglib.jspf"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ page session="false" %>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+	<script>
+	      $( document ).ready( function() {
+	        $( '.slider' ).slick( {
+	          autoplay: true,
+	          autoplaySpeed: 3000,
+	        } );
+	      } );
+	    </script>
+	 <style>
+	      img {
+	        max-width: 100%;
+	        height: 800px;
+	      }
+	      .slider {
+	        width: 1280px;
+	        margin: 0px auto;
+	      }
+	      .slick-prev:before, .slick-next:before {
+	        color: #444444;
+	      }
+	 </style>
+</head>
+
+<!-- contents -->
+<div id="contents">
+    <!-- sub title -->
+    <div class="sub-title">
+        <a href="<c:url value="/"/>" class="back-btn"><i class="i_go_back"></i></a>
+    </div>
+    <!-- //sub title -->
+
+    <!-- container -->
+    <div id="container" class="sub-wrap">
+    </div>
+    <!-- //container -->
+    
+    <div class="slider">
+      <div><img src="https://cdn.salgoonews.com/news/photo/202202/16023_39531_1722.jpg" alt="">1</div>
+      <div><img src="https://image.ajunews.com/content/image/2019/12/25/20191225170826943516.jpg" alt="">2</div>
+      <div><img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_262/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" alt="">3</div>
+      <div><img src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/1867-Pets_Vaccination-1296x728-header.jpg?w=1155&h=1528" alt="">4</div>
+    </div>
+</div>
+<!-- //contents -->
+
+</div>

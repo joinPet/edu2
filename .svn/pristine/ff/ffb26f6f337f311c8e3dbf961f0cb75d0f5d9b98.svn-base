@@ -1,0 +1,31 @@
+<section>
+  <div class="left">
+    <div class="sign-up">
+      <h1>Create An Account</h1>
+      <form action="">
+        <input type="text" placeholder="Username" />
+        <input type="email" placeholder="Email Address" />
+        <input type="password" placeholder="Create Password" />
+        <input type="password" placeholder="Confirm Password" />
+        <input type="submit" value="Sing Up" />
+      </form>
+      <p>
+        Already Have an account?
+        <a href="#" id="sign-in" onclick="toggle()">Sign In.</a>
+      </p>
+    </div>
+  </div>
+  <div class="right">
+    <div class="sign-in">
+      <h1>Sing In</h1>
+      <form action="">
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <input type="submit" value="Login" />
+      </form>
+      <p>
+        Don't have any account? <a href="#" onclick="toggle()">Sign Up.</a>
+      </p>
+    </div>
+  </div>
+</section>

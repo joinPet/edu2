@@ -1,0 +1,67 @@
+<%@page import="java.util.Map"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/taglib/taglib.jspf"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<style>
+	body {
+	background-color :#6c757d;
+	}
+	.justify-content-center {
+    background-color: black;
+	}
+</style>
+
+<div class="container">
+	<div class="select" style="margin-bottom: 10px">
+		<select class="form-select-sm" aria-label="Default select example">
+			<option selected>동물 유형</option>
+			<option value="1">강아지</option>
+			<option value="2">고양이</option>
+		</select>
+	</div>
+	<c:choose>
+		<c:when test="${fn:length(petListAll) > 0}">
+			<c:forEach items="${petListAll}" var="petListAll">
+				<div class="row" style="align-items: center">
+					<div class="col-sm-4">
+						<c:forEach items="${petListAll.getFileDetailList}" var="getFileDetailInfo">
+							<img alt="" style="width: 100px;" title=""
+								class="rounded-circle img-thumbnail isTooltip"
+								src="/upload/edu2/post/${getFileDetailInfo.fileName}"
+								data-original-title="Usuario">
+						</c:forEach>
+					</div>
+
+					<div class="col-sm-8">
+						<div class="row" style="align-items: center">
+							<div class="col-sm-9">
+								<div class="d-flex align-items-center">
+									<span class="bg-org"><c:out
+											value="${petListAll.pet_name}" /></span> <span
+										class="text-muted ps-4"><c:out
+											value="${petListAll.pet_age}" /></span> <span
+										class="text-muted ps-4"><c:out
+											value="${petListAll.pet_character}" /></span>
+								</div>
+								<div>
+									<p class="text-capitalize fs5 my-3 fw-bolder">
+										우리아이를 소개합니다!</a>
+									<p class="text-muted">
+										<c:out value="${petListAll.pet_intro}" />
+										</a>
+								</div>
+							</div>
+
+							<div class="col-sm-3">
+								<button onclick="<c:out value="location.href = '/profile/viewpetprofile.do?pet_id=${petListAll.pet_id}'"/>">프로필
+									구경가기</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</c:forEach>
+		</c:when>
+	</c:choose>
+</div>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ComCmmFileDAO">
+
+    <!-- 파일 상세 목록 정보 조회 -->
+    <select id="getFileDetailList" parameterType="hashMap" resultType="JtFileDetail">
+        select
+            file_seq
+             ,file_detail_no
+             ,file_name
+             ,file_original_name
+             ,file_extension
+             ,file_size
+             ,file_path
+             ,regist_date
+        from jt_file_detail
+        where file_seq = #{fileSeq}
+    </select>
+
+    <!-- 파일 상세 정보 조회 -->
+    <select id="getFileDetailInfo" parameterType="hashMap" resultType="JtFileDetail">
+        select
+            file_seq
+             ,file_detail_no
+             ,file_name
+             ,file_original_name
+             ,file_extension
+             ,file_size
+             ,file_path
+             ,regist_date
+        from jt_file_detail
+        where file_seq = #{fileSeq}
+          and file_detail_no = #{fileDetailNo}
+    </select>
+
+    <!-- 게시글 파일 정보 등록 -->
+    <insert id="setFileInsert" parameterType="JtFile">
+        <selectKey keyProperty="fileSeq" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into jt_file
+        (regist_date, use_yn)
+        values
+        (#{registDate}, #{useYn})
+    </insert>
+
+    <!-- 게시글 파일 상세 정보 등록 -->
+    <insert id="setFileDetailInsert" parameterType="JtFileDetail">
+        <selectKey keyProperty="fileDetailNo" resultType="JtFileDetail" order="BEFORE">
+            select ifNull(max(file_detail_no), 0) + 1 as fileDetailNo from jt_file_detail where file_seq = #{fileSeq}
+        </selectKey>
+        insert into jt_file_detail
+        (file_seq, file_detail_no, file_name, file_original_name, file_extension, file_size, file_path, regist_date )
+        values
+        (#{fileSeq}, #{fileDetailNo}, #{fileName}, #{fileOriginalName}, #{fileExtension}, #{fileSize}, #{filePath}, #{registDate} )
+    </insert>
+
+    <!-- 파일 상세 정보 삭제 -->
+    <delete id="setFileDetail">
+        delete from jt_file_detail
+        where file_seq = #{fileSeq}
+          and file_detail_no = #{fileDetailNo}
+    </delete>
+
+</mapper>

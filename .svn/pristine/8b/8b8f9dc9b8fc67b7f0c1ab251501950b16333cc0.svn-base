@@ -1,0 +1,85 @@
+<%@page import="java.util.Map"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/taglib/taglib.jspf"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body {
+	background-color: #6c757d;
+}
+.justify-content-center {
+    background-color: black;
+}
+h2 {
+	color: ghostwhite;
+}
+
+.card-header.card-header{
+		font-weight: bold;
+	}
+	
+.nav-pills .nav-link.active {
+	background-color: black;
+}
+</style>
+</head>
+<body>
+<% Map<String, Object> member = (Map<String, Object>) session.getAttribute("member");
+%>
+	<form action="/reservation/res_save.do" method="post">
+		<fieldset>
+			<br />
+			<div class="form-group">
+				<div class = "bg-org"><c:out value="${petInfo.pet_name}"/></div>
+				<input type="hidden" name = "recep_id" value="<c:out value="${petInfo.user_id}"/>">
+				<input type="hidden" name="send_id" value=<%=member.get("user_id") %>>
+				<input type="hidden" name="pet_id" value="<c:out value="${petInfo.pet_id}"/>">
+			</div>
+			<br /> <br />
+			<div class="form-group">
+			<label class="small mb-1" for="pet_name">언제 만나시기를 원하나요?</label>
+				<small id="dateHelp" class="form-text text-muted">Reservation
+					Date</small> <input type="date" name = "req_date" class="form-control datepicker"
+					id="exampleInputName2" data-date-format="mm/dd/yyyy" required />
+
+			</div>
+			<br />
+			<div class="form-group">
+			<label class="small mb-1" for="pet_name">몇시에 만나시기를 원하나요?</label>
+				<small id="timeHelp"  class="form-text text-muted">Reservation
+					Time</small> <input type="time" name = "req_time" class="form-control" id="exampleInputName3"
+					required />
+			</div>
+			<br />
+			<br />
+			<div class="form-group">
+			<label class="small mb-1" for="pet_name">무엇을 하고싶으세요?</label>
+				<select class="form-select" id="exampleSelect1" name="req_play">
+					
+					<option name="req_play" value="공놀이">공놀이</option>
+					<option name="req_play" value="산책">산책</option>
+					<option name="req_play" value="간식주기">간식주기</option>
+					<option name="req_play" value="펫카페가기">펫카페가기</option>
+				</select>
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+			<label class="small mb-1" for="pet_name">보호자님께 하고 싶은 말 남겨주세요</label>
+				<textarea  name="req_comment" class="form-control" id="exampleInputName4">
+					</textarea>
+			</div>
+			<br />
+			<br />
+			<button type="submit" class="btn btn-dark" id="btn-submit">
+				만남 요청하기</button>
+		</fieldset>
+		<br>
+		<p id="appointment"></p>
+	</form>
+</body>
+</html>

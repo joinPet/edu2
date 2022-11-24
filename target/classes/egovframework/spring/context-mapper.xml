@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="egov.propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/egovframework/props/globals.properties</value>
+				<value>classpath:/egovframework/props/configs.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 실행환경에서 빈이름 참조(EgovAbstractDAO) -->
+	<bean id="egov.lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/egovframework/config/mapper-config.xml" />
+		<property name="mapperLocations" value="classpath:/mapper/${Globals.DbType}/**/**/**/*SQL.xml" />
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSession" />
+	</bean>
+
+	<!--
+    &lt;!&ndash; 실행환경에서 빈이름 참조(EgovAbstractDAO) &ndash;&gt;
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+
+	&lt;!&ndash; Mybatis setup for Mybatis Database Layer &ndash;&gt;
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/config/mapper/mapper-config.xml" />
+		<property name="mapperLocations" value="classpath:/mapper/maria/**/**/*_SQL.xml" />
+	</bean>
+
+	&lt;!&ndash; Mybatis Session Template &ndash;&gt;
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	-->
+</beans>

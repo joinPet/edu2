@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/taglib/taglib.jspf"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ page session="false" %>
+<head>
+
+</head>
+
+<body>
+	<div class="container" align = "center">
+  <!-- Heading -->
+  <h1>SIGN IN</h1>
+  
+  <!-- Links -->
+  <ul class="links">
+    <li>
+      <a href="#" id="signin">SIGN IN</a>
+    </li>
+    <li>
+      <a href="#" id="signup">SIGN UP</a>
+    </li>
+    <li>
+      <a href="#" id="reset">RESET</a>
+    </li>
+  </ul>
+  
+  <!-- Form -->
+  <form  action="" method="post">
+    <!-- email input -->
+    <div class="first-input input__block first-input__block">
+       <input type="email" placeholder="Email" class="input" id="email"   />
+    </div>
+    <!-- password input -->
+    <div class="input__block">
+       <input type="password" placeholder="Password" class="input" id="password"    />
+    </div>
+    <!-- repeat password input -->
+    <div class="input__block">
+       <input type="password" placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
+    </div>
+    <!-- sign in button -->
+    <button class="signin__btn">
+      Sign in
+    </button>
+  </form>
+</div>
+</body>

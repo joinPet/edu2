@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container bootstrap snippets bootdey">
+<div class="panel-body inf-content">
+    <div class="row">
+    <!-- 왼쪽 메뉴 -->
+	<div class="col-sm-2">
+		<div class="card">
+			<div class="card-header">Profile</div>
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-item"><a
+					class="nav-link text-decoration-none link-dark ${path eq '/profile/profile.do' ? 'active':''}"
+					href="/profile/profile.do">My profile</a></li>
+				<li class="nav-item"><a
+					class="nav-link text-decoration-none link-light active ${path eq '/profile/petmanage.do' ? 'active':''}"
+					href="/profile/petmanage.do">Pet profile</a></li>
+					<li class="nav-item"><a
+					class="nav-link text-decoration-none link-dark ${path eq '' ? 'active':''}"
+					href="/reservation/res_list.do">요청관리 페이지</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="col-md-4">
+	<h2 class="bd-title border-bottom pb-3 mb-3">pet profile 관리</h2>
+        <a href="/profile/petform.do">
+            <img  alt="" style="width:100px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario"> 
+        	<h6 class="mb-0">강아지 이름</h6>
+        </a>
+        
+       
+        <a href="/profile/petform.do">
+            <img  alt="" style="width:100px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario"> 
+        	<h6 class="mb-0">강아지 이름</h6>
+        </a>
+        
+        
+        <a href="/profile/petform.do">
+            <img  alt="" style="width:100px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario"> 
+        	<h6 class="mb-0">강아지 이름</h6>
+        </a>
+        </div>
+</div>
+</div>                                        
+</body>
+</html>

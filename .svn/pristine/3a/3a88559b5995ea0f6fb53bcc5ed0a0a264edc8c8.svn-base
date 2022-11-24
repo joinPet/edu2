@@ -1,0 +1,114 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<style>
+body {
+	background-color: #6c757d;
+}
+.justify-content-center {
+    background-color: black;
+}
+h2 {
+	color: ghostwhite;
+}
+.card-header.card-header{
+	font-weight: bold;
+}
+	
+.nav-pills .nav-link.active {
+	background-color: black;
+}
+</style>
+<div class="res-container" style="margin-bottom:22%">
+	<div class="row">
+		<!-- 왼쪽 메뉴 -->
+		<div class="col-sm-2">
+			<div class="card">
+				<div class="card-header">Profile</div>
+				<ul class="nav nav-pills flex-column">
+					<li class="nav-item"><a
+						class="nav-link text-decoration-none link-dark ${path eq '/profile/profile.do' ? 'active':''}"
+						href="/profile/profile.do">My profile</a></li>
+					<li class="nav-item"><a
+						class="nav-link text-decoration-none link-dark ${path eq '/profile/petmanage.do' ? 'active':''}"
+						href="/profile/petmanage.do">Pet profile</a></li>
+					<li class="nav-item"><a
+						class="nav-link text-decoration-none link-light active ${path eq '' ? 'active':''}"
+						href="/reservation/res_list.do">요청관리 페이지</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-sm-10">
+			<h2 class="bd-title border-bottom pb-3 mb-3">요청관리 페이지</h2>
+			<div class="card mb-3">
+				<div class="card-body">
+					<div class="d-flex flex-column flex-lg-row">
+						<span class="avatar avatar-text rounded-3 me-4 mb-2">FD</span>
+						<div class="row flex-fill">
+							<div class="col-sm-5">
+								<h4 class="h5">Junior Frontend Developer</h4>
+								<span class="badge bg-secondary">WORLDWIDE</span> <span
+									class="badge bg-success">$60K - $100K</span>
+							</div>
+							<div class="col-sm-4 py-2">
+								<span class="badge bg-secondary">REACT</span> <span
+									class="badge bg-secondary">NODE</span> <span
+									class="badge bg-secondary">TYPESCRIPT</span> <span
+									class="badge bg-secondary">JUNIOR</span>
+							</div>
+							<div class="col-sm-3 text-lg-end">
+								<a href="#" class="btn btn-primary stretched-link">Apply</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mb-3">
+				<div class="card-body">
+					<div class="d-flex flex-column flex-lg-row">
+						<span class="avatar avatar-text rounded-3 me-4 bg-warning mb-2">BE</span>
+						<div class="row flex-fill">
+							<div class="col-sm-5">
+								<h4 class="h5">Senior Backend Engineer</h4>
+								<span class="badge bg-secondary">US</span> <span
+									class="badge bg-success">$90K - $180K</span>
+							</div>
+							<div class="col-sm-4 py-2">
+								<span class="badge bg-secondary">GOLANG</span> <span
+									class="badge bg-secondary">SENIOR</span> <span
+									class="badge bg-secondary">ENGINEER</span> <span
+									class="badge bg-secondary">BACKEND</span>
+							</div>
+							<div class="col-sm-3 text-lg-end">
+								<a href="#" class="btn btn-primary stretched-link">Apply</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mb-3">
+				<div class="card-body">
+					<div class="d-flex flex-column flex-lg-row">
+						<span class="avatar avatar-text rounded-3 me-4 bg-info mb-2">PM</span>
+						<div class="row flex-fill">
+							<div class="col-sm-5">
+								<h4 class="h5">Director of Product Marketing</h4>
+								<span class="badge bg-secondary">WORLDWIDE</span> <span
+									class="badge bg-success">$150K - $210K</span>
+							</div>
+							<div class="col-sm-4 py-2">
+								<span class="badge bg-secondary">PRODUCT MARKETING</span> <span
+									class="badge bg-secondary">MARKETING</span> <span
+									class="badge bg-secondary">EXECUTIVE</span> <span
+									class="badge bg-secondary">ECOMMERCE</span>
+							</div>
+							<div class="col-sm-3 text-lg-end">
+								<a href="#" class="btn btn-primary stretched-link">Apply</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

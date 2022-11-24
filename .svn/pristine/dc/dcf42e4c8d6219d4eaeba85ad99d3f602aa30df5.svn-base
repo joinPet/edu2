@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- initMethod-->
+	<!--
+	<bean id="InitInterceptor" class="egovframework.cmm.interceptor.InitInterceptor" init-method="initMethod"/>
+	-->
+
+	<!-- resources mpping -->
+	<mvc:resources mapping="/assets/**" location="/assets/" />
+	<mvc:resources mapping="/deploy/**" location="file:///data/deploy/" />
+	<mvc:resources mapping="/upload/**" location="file:///data/upload/" />
+	<!--
+	<mvc:resources mapping="/deploy/**" location="file:///data/deploy/" />
+	<mvc:resources mapping="/upload/**" location="file:///data/upload/aiparking/" />
+	-->
+
+	<context:component-scan base-package="egovframework" />
+	<context:component-scan base-package="kr.co.jointree" />
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven />
+
+	<!-- 스케줄러 사용 -->
+	<task:annotation-driven />
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	<context:annotation-config />
+
+	<!-- 파일업로드추가   -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+	<util:properties id="configs" location="classpath:/egovframework/props/configs.properties" />
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/egovframework/props/globals.properties</value>
+				<value>classpath:/egovframework/props/configs.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		  p:order="1"
+		  p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView" />
+
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles.xml</value>
+            </list>
+        </property>
+    </bean>
+
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		  p:order="2"
+		  p:viewClass="org.springframework.web.servlet.view.JstlView"
+		  p:prefix="/WEB-INF/jsp/"
+		  p:suffix=".jsp"/>
+
+	<!-- Interceptors 	-->
+	<mvc:interceptors>
+		<!--
+	    <mvc:interceptor>
+	        <mvc:mapping path="/**/*.do"/>
+	        <mvc:exclude-mapping path="/service/home/ChangeHome.do"/>
+	        <mvc:exclude-mapping path="/service/home/HelloHome.do"/>
+	        <mvc:exclude-mapping path="/uat/uia/actionLogout.do"/>
+	        <mvc:exclude-mapping path="/service/page/updatePassoword.do"/>
+	        <mvc:exclude-mapping path="/service/home/manual.do"/>
+	        <bean class="egovframework.com.cmm.interceptor.AuthenticInterceptor" />
+	    </mvc:interceptor>
+		-->
+
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*.do"/>
+			<!--
+			<mvc:exclude-mapping path="/jtsm/system/login.do"/>
+			<mvc:exclude-mapping path="/jtsm/system/logout.do"/>
+			<mvc:exclude-mapping path="/**/login.do"/>
+			-->
+			<mvc:exclude-mapping path="/**/logout.do"/>
+			<mvc:exclude-mapping path="/api-*/**"/>
+			<mvc:exclude-mapping path="/**/api-*/**"/>
+			<mvc:exclude-mapping path="/**/**/api-*/**"/>
+			<mvc:exclude-mapping path="/api/vendor-call/**"/>
+			<bean id="UserInterceptor" class="egovframework.com.cmm.interceptor.InitInterceptor"></bean>
+		</mvc:interceptor>
+		<!--<bean class="egovframework.com.cmm.interceptor.LogInterceptor" />-->
+
+		<!-- API 컨트롤러 전처리  -->
+		<mvc:interceptor>
+			<mvc:mapping path="/api-*/**"/>
+			<mvc:mapping path="/**/api-*/**"/>
+			<mvc:mapping path="/**/**/api-*/**"/>
+			<mvc:mapping path="/api/vendor-call/**"/>
+			<bean id="ApiInterceptor" class="egovframework.com.cmm.interceptor.ApiInterceptor"></bean>
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
+</beans>

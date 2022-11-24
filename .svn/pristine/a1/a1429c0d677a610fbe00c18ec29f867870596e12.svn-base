@@ -1,0 +1,16 @@
+package kr.co.jointree.edu2.site.profile.service.impl;
+
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.validation.annotation.Validated;
+
+import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
+@Validated
+@Repository("SitePetDAO")
+public class SitePetDAO extends EgovComAbstractDAO {
+	//펫등록
+		int petInsert(Map<String, Object> pet) {
+			return insert("SitePetDAO.petInsert", pet);
+		}
+}

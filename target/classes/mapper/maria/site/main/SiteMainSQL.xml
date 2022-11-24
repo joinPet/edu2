@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SiteMainDAO">
+	
+	<!-- 코드 목록 정보 갯수  -->
+	<select id="getTestCount" parameterType="hashMap" resultType="int">
+		select 
+			 count(1) as count
+		from jt_post
+		where delete_date is null
+		  and delete_ip is null
+		  and delete_id is null
+		  <choose>
+            <when test='searchKey != null and searchKey != ""'>
+                <if test='searchKeyword != null and searchKeyword != ""'>
+                    <choose>
+                        <when test='searchKey == "post_title"'>
+                            and post_title like concat('%',#{searchKeyword},'%')
+                        </when>
+                        <when test='searchKey == "post_content"'>
+                            and post_content like concat('%',#{searchKeyword},'%')
+                        </when>
+                    </choose>
+                </if>
+            </when>
+            <otherwise>
+                <if test='searchKeyword != null and searchKeyword != ""'>
+                    and ( post_title like concat('%',#{searchKeyword},'%') or post_content like concat('%',#{searchKeyword},'%') )
+                </if>
+            </otherwise>
+        </choose>
+	</select>
+	
+	<!-- 코드 목록 정보 조회  -->
+	<select id="getTestList" parameterType="hashMap" resultType="hashMap">
+		select
+            @RNUM := concat(@RNUM + 1) as rn, main.*
+        from(
+            select 
+				 post_seq
+				,post_title
+				,post_content
+				,regist_date
+				,regist_ip
+				,regist_id
+				,update_date
+				,update_ip
+				,update_id
+				,delete_date
+				,delete_ip
+				,delete_id
+			from jt_post
+			where delete_date is null
+			  and delete_ip is null
+			  and delete_id is null
+			<choose>
+		        <when test='searchKey != null and searchKey != ""'>
+		            <if test='searchKeyword != null and searchKeyword != ""'>
+		                <choose>
+		                    <when test='searchKey == "post_title"'>
+		                        and post_title like concat('%',#{searchKeyword},'%')
+		                    </when>
+		                    <when test='searchKey == "post_content"'>
+		                        and post_content like concat('%',#{searchKeyword},'%')
+		                    </when>
+		                </choose>
+		            </if>
+		        </when>
+		        <otherwise>
+		            <if test='searchKeyword != null and searchKeyword != ""'>
+		                and ( post_title like concat('%',#{searchKeyword},'%') or post_content like concat('%',#{searchKeyword},'%') )
+		            </if>
+		        </otherwise>
+		    </choose>
+        <![CDATA[
+        ) main, ( SELECT @RNUM := ${firstRecordIndex} ) R
+        order by regist_date desc
+        limit ${firstRecordIndex}, ${recordCountPerPage}
+       ]]>
+	</select>
+	
+	<!-- 테스트 단건 정보 조회  -->
+	<select id="getTestInfo" parameterType="hashMap" resultType="hashMap">
+		select 
+			 post_seq
+			,post_title
+			,post_content
+			,regist_date
+			,regist_ip
+			,regist_id
+			,update_date
+			,update_ip
+			,update_id
+			,delete_date
+			,delete_ip
+			,delete_id
+		from jt_post
+		where post_seq = #{post_seq}
+		  and delete_date is null
+		  and delete_ip is null
+		  and delete_id is null
+	</select>
+	
+	<!-- 테스트 정보 등록  -->
+	<insert id="setTestInsert">
+		insert into jt_post
+			( post_title, post_content ,regist_date ,regist_ip ,regist_id )
+		values
+			( #{post_title}, #{post_content} ,#{param_date} ,#{param_ip} ,#{param_id} )
+	</insert>
+	
+	<!-- 테스트 정보 수정  -->
+	<update id="setTestUpdate">
+		update jt_post set
+			post_title		= #{post_title}
+			,post_content 	= #{post_content}
+			,update_date 	= #{param_date}
+			,update_ip 		= #{param_ip}
+			,update_id 		= #{param_id}
+		where post_seq 		= #{post_seq}
+	</update>
+	
+	<!-- 테스트 정보 삭제  -->
+	<update id="setTestDelete">
+		update jt_post set
+			delete_date 	= #{param_date}
+			,delete_ip 		= #{param_ip}
+			,delete_id 		= #{param_id}
+		where post_seq		= #{post_seq}
+	</update>
+	
+</mapper>

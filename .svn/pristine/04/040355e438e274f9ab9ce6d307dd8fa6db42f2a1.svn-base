@@ -1,0 +1,44 @@
+package kr.co.jointree.edu2.site.member.service.impl;
+
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.co.jointree.edu2.site.member.SiteMemberController;
+import kr.co.jointree.edu2.site.member.model.MemberVO;
+import kr.co.jointree.edu2.site.member.service.SiteMemberService;
+
+@Service("SiteMemberService")
+public class SiteMemberimpl implements SiteMemberService{
+	public static Logger log = LoggerFactory.getLogger(SiteMemberimpl.class);
+	
+	@Autowired
+	private SiteMemberDAO sitememberDAO;
+	
+	@Override
+	public int memberInsert(Map<String, Object> member) {
+		log.debug("member : {}", member);
+		int insertData =sitememberDAO.memberInsert(member);
+		return insertData;
+	}
+
+	@Override
+	public Map<String, Object> memberLogin(Map<String, Object> paramMap) {
+		 Map<String, Object> selectData = sitememberDAO.memberLogin(paramMap);
+		 return selectData;
+	}
+
+	@Override
+	public int memberCheck(String user_id) {
+		return sitememberDAO.memberCheck(user_id);
+	}
+
+	@Override
+	public Map<String, Object> memberInfo(String user_id) {
+		Map<String, Object> selectData = sitememberDAO.memberInfo(user_id);
+		return selectData;
+	}
+}

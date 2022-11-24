@@ -1,0 +1,12 @@
+package kr.co.jointree.edu2.site.member.service;
+
+import java.util.Map;
+
+import kr.co.jointree.edu2.site.member.model.MemberVO;
+
+public interface SiteMemberService {
+	// 회원가입
+	public int memberInsert(Map<String, Object> member);
+	//로그인
+	Map<String, Object> memberLogin(Map<String, Object> paramMap);
+}

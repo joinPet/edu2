@@ -1,0 +1,29 @@
+package kr.co.jointree.edu2.site.profile.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.validation.annotation.Validated;
+
+import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
+@Validated
+@Repository("SitePetDAO")
+public class SitePetDAO extends EgovComAbstractDAO {
+	//펫등록
+		int petInsert(Map<String, Object> pet) {
+			return insert("SitePetDAO.petInsert", pet);
+		}
+	// user 아디이에 따른 pet 정보 리스트
+		List<Map<String, Object>> petListByID(String user_id){
+			return selectList("SitePetDAO.petListByID", user_id);
+		}
+	// 모든 pet 정보 리스트
+		List<Map<String, Object>> petListAll(){
+			return selectList("SitePetDAO.petListAll");
+		}	
+	//Pet 아이디에 따른 pet 정보 가져오기
+		Map<String, Object> petInfo(Map<String, Object> pet_id){
+			return selectOne("SitePetDAO.petInfo", pet_id);
+		}
+}
