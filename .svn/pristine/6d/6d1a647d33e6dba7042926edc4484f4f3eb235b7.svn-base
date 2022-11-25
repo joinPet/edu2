@@ -45,6 +45,11 @@ public class SiteMemberimpl implements SiteMemberService{
 	@Override
 	public String memberFindID(String email) throws Exception {
 		String id = sitememberDAO.memberFindID(email);
-		return id;
+		
+		if (id == null) {
+			return null;
+		} else {
+			return id;
+		}
 	}
 }

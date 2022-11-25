@@ -56,7 +56,8 @@ h2 {
 					<li class="nav-item" role="presentation">
 						<button class="nav-link active" id="pills-home-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
-							role="tab" aria-controls="pills-home" aria-selected="true">보낸 요청</button>
+							role="tab" aria-controls="pills-home" aria-selected="true">보낸
+							요청</button>
 					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="pills-profile-tab"
@@ -144,7 +145,7 @@ h2 {
 												</div>
 												<div class="col-sm-2 text-lg-end">
 													<button data-toggle="modal" data-target="#exampleModal-4"
-														data-whatever="@fat"
+														data-whatever="@fat" data-id="<c:set items="${sendList}" var="sendList"/>"
 														class="btn btn-primary stretched-link">자세히 보기</button>
 												</div>
 											</div>

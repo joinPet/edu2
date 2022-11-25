@@ -1,10 +1,8 @@
 package kr.co.jointree.edu2.site.member;
 
-import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -87,20 +85,12 @@ public class SiteMemberController {
 	public String ForgotId(HttpServletRequest request, Model model, @RequestParam Map<String, Object> paramMap) {
 		return "/site/member/ForgotId.site";
 	}
-	
-	@PostMapping(value = { "/member/GotId.do" })
-	public String GotId(HttpServletResponse response, HttpServletRequest request, Model model, @RequestParam("email") String email) throws Exception {
+
+	@GetMapping(value = { "/member/GotId.do" })
+	public String GotId(HttpServletRequest request, Model model, @RequestParam("email") String email) throws Exception {
+		System.out.println("email : " + email);
 		model.addAttribute("id", sitememberservice.memberFindID(email));
-		String id = sitememberservice.memberFindID(email);
-		if (id != null) {
-			return "/site/member/GotId.site";
-		} else {
-			response.setContentType("text/html; charset=utf-8");
-	        PrintWriter w = response.getWriter();
-	        w.write("<script>alert('입력하신 이메일 정보가 존재하지 않습니다.');alert('회원가입 후 이용해주세요.');location.href='../member/join.do';</script>");
-	        w.flush();
-	        return "";
-		}
+		return "/site/member/GotId.site";
 	}
 
 	@GetMapping(value = { "/member/GotPW.do" })
